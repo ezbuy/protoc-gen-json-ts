@@ -52,6 +52,16 @@ const typeCast = (field: FieldDescriptorProto, mapEntriesMap: {[key: string]: De
 	return `${typeStr}${label === labels.LABEL_REPEATED ? [] : ""}`;
 };
 
+function isInt64(type: FieldDescriptorProto.Type){
+	const types = FieldDescriptorProto.Type;
+	return [types.TYPE_UINT64, types.TYPE_INT64, types.TYPE_FIXED64].includes(type);
+}
+
+function isFloatOrDouble(type: FieldDescriptorProto.Type){
+	const types = FieldDescriptorProto.Type;
+	return [types.TYPE_FLOAT, types.TYPE_DOUBLE].includes(type);
+}
+
 const renderAllMessages = (messages: DescriptorProto[] = [], packageName: string, fileName: string, parentTypeName = "") => {
 	return messages
 		.map(message => {
@@ -72,8 +82,22 @@ const renderAllMessages = (messages: DescriptorProto[] = [], packageName: string
 export interface ${parentTypeName}${name} {
 ${fields
 				.reduce<string[]>((lines, field) => {
+					const fieldType = typeCast(field, mapEntriesMap, fileName);
+					const isFieldInt64 = isInt64(field.getType());
+					if (fieldType === "number" || isFieldInt64) {
+						lines.push(`	/**`);
+						if (isFieldInt64) {
+							lines.push(`	 * @pattern ^\\d+$`);
+						}else{
+							lines.push("	 * @minimum 0");
+							if (!isFloatOrDouble(field.getType())) {
+								lines.push("	 * @TJS-type integer");
+							}
+						}
+						lines.push(`	 */`);
+					}
 					lines.push(
-						`	${field.getName()}: ${typeCast(field, mapEntriesMap, fileName)};`
+						`	${field.getName()}: ${fieldType};`
 					);
 					return lines;
 				}, [])
