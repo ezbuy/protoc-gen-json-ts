@@ -31,3 +31,8 @@ export const strRepeat = (str: string, times: number) => {
 	}
 	return arr.join("");
 };
+
+export const getRoot = (str: string) => {
+	const depth = str.split("/").length;
+	return depth === 1 ? "./" : strRepeat("../", depth - 1);
+}

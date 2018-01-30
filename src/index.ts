@@ -26,7 +26,7 @@ withAllStdIn().then((inputBuff: Buffer)=>{
 		});
 
 		Object.keys(fileNameToDescriptor).forEach((fileName) => {
-			const outputFileName = fileName.replace(/\.proto$/, "");
+			const outputFileName = fileName.replace(/\.proto$/, "").replace(/\./g, "/");
 			const thisFile = new CodeGeneratorResponse.File();
 			thisFile.setName(`${outputFileName}.ts`);
 			thisFile.setContent(template(fileNameToDescriptor[fileName], "./webapi.ts").replace(/^\s*/, ""));

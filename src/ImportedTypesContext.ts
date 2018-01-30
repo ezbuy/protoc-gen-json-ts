@@ -1,4 +1,5 @@
 import { FileDescriptorProto, DescriptorProto, EnumDescriptorProto } from "google-protobuf/google/protobuf/descriptor_pb";
+import { getRoot } from "./util";
 
 type DescriptorType = DescriptorProto | EnumDescriptorProto;
 
@@ -61,7 +62,8 @@ class ImportedTypesContext {
             const origin = `${typeObj.parentTypeName}${typeObj.descriptor.getName()}`;
             if (typeObj.fileName !== fileName) {
                 const aliasName = buildTypeName(typeObj.packageName, origin);
-                this.addTypeReference(fileName, typeObj.fileName, origin, aliasName);
+                const refPathName = `${getRoot(fileName)}${typeObj.fileName.replace(/\.proto$/, "").replace(/\./g, "/")}`;
+                this.addTypeReference(fileName, refPathName, origin, aliasName);
                 return aliasName;
             }
             return origin;
