@@ -61,7 +61,7 @@ const typeCast = (
       break;
     }
   }
-  return `${typeStr}${label === labels.LABEL_REPEATED ? [] : ""}`;
+  return `${typeStr}${label === labels.LABEL_REPEATED ? "[]" : ""}`;
 };
 
 function isInt64(type: FieldDescriptorProto.Type) {
