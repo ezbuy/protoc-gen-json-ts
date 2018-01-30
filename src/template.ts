@@ -158,10 +158,10 @@ function renderImportSection(hasService: boolean, webapiPath: string, fileName: 
 	
 	return `
 		${hasService ? `import webapi from "${webapiPath}";` : ""}
-		${Object.keys((referenceMap === undefined ? {} : referenceMap)).map((refFileName)=> {
-			const refsArr = referenceMap[refFileName];
-			return `import { ${refsArr.map(({alias, origin}) => (`${origin} as ${alias}`)).join(",")} } from "${refFileName}";`;
-		}).join(lineSplitter)}
+${Object.keys((referenceMap === undefined ? {} : referenceMap)).map((refFileName)=> {
+	const refsArr = referenceMap[refFileName];
+	return `import { ${refsArr.map(({alias, origin}) => (`${origin} as ${alias}`)).join(", ")} } from "${refFileName}";`;
+}).join(lineSplitter)}
 	`.trim();
 }
 
