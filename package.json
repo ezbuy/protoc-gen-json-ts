@@ -1,0 +1,16 @@
+{
+  "name": "ts-protoc-json-gen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "王麟 <wanglin@ezbuy.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^9.4.0",
+    "google-protobuf": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.2.7",
+    "ts-protoc-gen": "^0.4.0",
+    "tslint": "^5.9.1"
+  }
+}

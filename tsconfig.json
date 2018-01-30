@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"module": "commonjs",
+		"target": "ES6",
+		"removeComments": true,
+		"lib":[
+			"es5",
+			"scripthost",
+			"es6",
+			"es2016.array.include"
+		],
+		"moduleResolution": "node"
+	},
+	"include": [
+		"./src/**/index.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"./dist"
+	]
+}
