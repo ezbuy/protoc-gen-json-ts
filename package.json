@@ -1,9 +1,12 @@
 {
-  "name": "ts-protoc-json-gen",
+  "name": "protoc-gen-json-ts",
   "version": "1.0.0",
   "main": "index.js",
   "author": "王麟 <wanglin@ezbuy.com>",
   "license": "MIT",
+  "bin": {
+    "protoc-gen-json-ts": "./bin/protoc-gen-json-ts"
+  },
   "dependencies": {
     "@types/node": "^9.4.0",
     "google-protobuf": "^3.5.0"
