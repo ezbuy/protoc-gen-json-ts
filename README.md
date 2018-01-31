@@ -21,4 +21,4 @@ protobuf文件的根路径，一般为./apidoc/proto。
 
 ## 安装protoc
 
-进入https://github.com/google/protobuf/releases，下载对应的protoc二进制文件。
+进入https://github.com/google/protobuf/releases ，下载对应的protoc二进制文件。
