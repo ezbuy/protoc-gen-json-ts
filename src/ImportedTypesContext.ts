@@ -77,6 +77,9 @@ class ImportedTypesContext {
   }
 
   getTypeName(typeKey: string, fileName: string) {
+    if (typeKey === ".common.Any") {
+      return `{"@type": string; [key: string]: any}`;
+    }
     if (this.types[typeKey]) {
       const typeObj = this.types[typeKey];
       const origin = `${typeObj.parentTypeName}${typeObj.descriptor.getName()}`;
