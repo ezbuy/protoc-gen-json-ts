@@ -50,7 +50,7 @@ const typeCast = (
       break;
     case types.TYPE_MESSAGE: {
       if (mapEntriesMap[typeName]) {
-        typeStr = `{[key: string]: ${typeCast(
+        return `{[key: string]: ${typeCast(
           mapEntriesMap[typeName].getFieldList()[1],
           {},
           fileName
@@ -217,7 +217,6 @@ function renderImportSection(
   const referenceMap = getImportedTypesContext().getReferenceMap(fileName);
 
   return `
-		${hasService ? `import webapi from "${webapiPath}";` : ""}
 ${Object.keys(referenceMap === undefined ? {} : referenceMap)
     .map(refFileName => {
       const refsArr = referenceMap[refFileName];
@@ -226,6 +225,7 @@ ${Object.keys(referenceMap === undefined ? {} : referenceMap)
         .join(", ")} } from "${refFileName}";`;
     })
     .join(lineSplitter)}
+${hasService ? `import webapi from "${webapiPath}";` : ""}
 	`.trim();
 }
 

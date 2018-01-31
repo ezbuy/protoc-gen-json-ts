@@ -41,7 +41,7 @@ withAllStdIn().then((inputBuff: Buffer) => {
       thisFile.setContent(
         template(
           fileNameToDescriptor[fileName],
-          webapi === undefined ? "./webapi.ts" : webapi
+          webapi === undefined ? "./webapi" : webapi
         ).replace(/^\s*/, "")
       );
       codeGenResponse.addFile(thisFile);
