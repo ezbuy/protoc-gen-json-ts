@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-json-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "author": "王麟 <wanglin@ezbuy.com>",
   "license": "MIT",
   "bin": {
@@ -28,7 +28,6 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "prettier": "^1.10.2",
-    "ts-protoc-gen": "^0.4.0",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2"
   }
