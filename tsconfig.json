@@ -7,6 +7,8 @@
 		"module": "commonjs",
 		"target": "ES6",
 		"removeComments": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"lib":[
 			"es5",
 			"scripthost",

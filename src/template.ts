@@ -17,8 +17,6 @@ export interface ImportedType {
   name: string;
 }
 
-const randomString = Math.ceil(Math.random() * Math.pow(10, 10)).toString(32);
-
 const lineSplitter = "\n";
 
 const typeCast = (
@@ -75,6 +73,29 @@ function isFloatOrDouble(type: FieldDescriptorProto.Type) {
   const types = FieldDescriptorProto.Type;
   return [types.TYPE_FLOAT, types.TYPE_DOUBLE].includes(type);
 }
+
+const renderAllEnums = (
+  enums: EnumDescriptorProto[] = [],
+  parentTypeName = ""
+) => {
+  enums = enums.filter(enumObj => Object.keys(enumObj).length > 0);
+  if (enums.length > 0) {
+    return enums
+      .map(oneEnum => {
+        return `
+export enum ${parentTypeName}${oneEnum.getName()} {
+${oneEnum
+          .getValueList()
+          .map(value => `	${value.getName()} = "${value.getName()}",`)
+          .join(lineSplitter)}
+}
+
+`;
+      })
+      .join("");
+  }
+  return "";
+};
 
 const renderAllMessages = (
   messages: DescriptorProto[] = [],
@@ -139,29 +160,6 @@ ${fields
 `);
     })
     .join("");
-};
-
-const renderAllEnums = (
-  enums: EnumDescriptorProto[] = [],
-  parentTypeName = ""
-) => {
-  enums = enums.filter(enumObj => Object.keys(enumObj).length > 0);
-  if (enums.length > 0) {
-    return enums
-      .map(oneEnum => {
-        return `
-export enum ${parentTypeName}${oneEnum.getName()} {
-${oneEnum
-          .getValueList()
-          .map(value => `	${value.getName()} = "${value.getName()}",`)
-          .join(lineSplitter)}
-}
-
-`;
-      })
-      .join("");
-  }
-  return "";
 };
 
 const renderMethods = (

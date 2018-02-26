@@ -11,8 +11,7 @@
         ],
         "no-unused-expression": true,
         "no-unused-variable": [
-            true,
-            "react"
+            true
         ],
         "no-use-before-declare": true,
         "no-duplicate-variable": true,
@@ -61,7 +60,6 @@
             "check-separator",
             "check-type",
             "check-typecast"
-        ],
-        "component-state-and-props-no-any": true
+        ]
     }
 }
