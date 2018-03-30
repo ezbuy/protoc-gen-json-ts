@@ -18,7 +18,7 @@
     "precommit": "lint-staged",
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "tslint --project tsconfig.json --fix",
-    "prepublish": "rm -fr ./dist && tsc"
+    "prepare": "rm -fr ./dist && tsc"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
