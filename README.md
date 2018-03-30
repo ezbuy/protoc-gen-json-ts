@@ -31,7 +31,7 @@ $ yarn add protoc-gen-json-ts -D
 
 进入https://github.com/google/protobuf/releases ，下载对应的protoc二进制文件。
 
-通过 HomeBrew 安装
+通过 Homebrew 安装
 
 ```shell
 $ brew install protobuf
