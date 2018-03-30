@@ -1,4 +1,4 @@
-# Usage
+## Usage
 
 ```shell
 protoc --plugin=protoc-gen-json-ts=./node_modules/protoc-gen-json-ts/bin/protoc-gen-json-ts --json-ts_out=:src/services -I ./apidoc/proto ./apidoc/proto/oktights/oktights.proto
@@ -19,6 +19,27 @@ protoc --plugin=protoc-gen-json-ts=./node_modules/protoc-gen-json-ts/bin/protoc-
 
 protobuf文件的根路径，一般为./apidoc/proto。
 
-## 安装protoc
+## 安装
+
+```shell
+$ yarn add protoc-gen-json-ts -D
+```
+
+这个包还依赖 protobuf 官方的二进制文件，可以通过下面两种方式安装
+
+手动安装
 
 进入https://github.com/google/protobuf/releases ，下载对应的protoc二进制文件。
+
+通过 HomeBrew 安装
+
+```shell
+$ brew install protobuf
+```
+
+确保你安装完的 protoc 的版本是 3.0 以上
+
+```shell
+$ protoc --version
+libprotoc 3.5.1
+```
