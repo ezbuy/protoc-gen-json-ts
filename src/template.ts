@@ -175,7 +175,7 @@ const renderMethods = (
       const inputType = context.getTypeName(method.getInputType(), fileName);
       const outputType = context.getTypeName(method.getOutputType(), fileName);
       return `
-export function ${name}(payload: ${inputType}) {
+export function ${name}(payload: Partial<${inputType}>) {
 	return webapi<${outputType}>("${
         packageName === "" ? "" : `${packageName}.`
       }${serviceName}/${name}", payload);
